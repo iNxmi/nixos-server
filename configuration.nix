@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./configuration.d/packages.nix
+    ./configuration.d/restart.nix
+    ./configuration.d/users.nix
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.loader.systemd-boot.enable = true;
@@ -23,23 +28,7 @@
 
   time.timeZone = "Europe/Berlin";
 
-  environment.systemPackages = with pkgs; [
-    openssh
-    docker
-    docker-compose
-    neovim
-    zfs
-    htop
-    git
-  ];
-
   virtualisation.docker.enable = true;
-  
-  users.users.memphis = {
-    isNormalUser = true;
-    home = "/home/memphis";
-    extraGroups = [ "wheel" "docker" ];
-  };
 
   services.openssh = {
     enable = true;
