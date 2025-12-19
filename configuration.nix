@@ -8,6 +8,8 @@
     ./configuration.d/users.nix
   ];
 
+  console.keyMap = "de";
+
   boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

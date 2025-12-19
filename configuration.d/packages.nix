@@ -5,7 +5,6 @@
     openssh
     docker
     docker-compose
-    neovim
     zfs
     git
   ];
