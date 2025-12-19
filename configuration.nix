@@ -32,8 +32,11 @@
 
   services.openssh = {
     enable = true;
-    # settings.PermitRootLogin = "yes";
-    settings.PasswordAuthentication = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
 
   fileSystems."/home" = {
